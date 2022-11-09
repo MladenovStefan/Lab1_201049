@@ -15,14 +15,23 @@
 </header>
 <main>
     <h2>Choose course:</h2>
-    <div th:each="course : ${courses}">
-        <input type="radio" name="courseId" th:value="${course.getCourseId()}">
-        <label th:for="${course.getCourseId()}" th:text="${course.getName()}"></label>
-    </div>
+    <form th:method="POST" th:action="@{/listCourses}">
+        <ul>
+            <li th:each="course : ${courses}">
+                <input type="radio" name="courseId" th:value="${course.getCourseId()}" th:text="${course.getName()}">
+                <label th:for="${course.getCourseId()}"></label>
+            </li>
+        </ul>
+        <input type="submit" th:value="Submit"/>
+    </form>
+<!--    <div th:each="course : ${courses}">-->
+<!--        <input type="radio" name="courseId" th:value="${course.getCourseId()}">-->
+<!--        <label th:for="${course.getCourseId()}" th:text="${course.getName()}"></label>-->
+<!--    </div>-->
 <!--    <input type="radio" name="courseId" value="1"> Веб програмирање<br/>-->
 
     <br/>
-    <a href="/AddStudent">Submit</a>
+
 </main>
 </body>
 </html>
