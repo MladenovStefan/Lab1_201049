@@ -7,7 +7,8 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-
+//Da se implementira prebaruvanje na studenti na stranata kade istite se prikazuvaat ili
+//da se prebaruvanje na kursevi na stranata na tie se prikazuvaat
 @Component
 public class DataHolder {
     public static List<Course> courseList = new ArrayList<>();
@@ -23,5 +24,12 @@ public class DataHolder {
                 "EMT", new ArrayList<Student>()));
         courseList.add(new Course(4L, "Kompjuterski mrezi",
                 "KM", new ArrayList<Student>()));
+
+        studentList.add(new Student("petar.petrov", "petar.petrov",
+                "Petar", "Petrov"));
+        studentList.add(new Student("mile.milev", "mile.milev",
+                "Mile", "Milev"));
+        studentList.add(new Student("gjorgji.gjorgjiev", "gjorgji.gjorgjiev",
+                "Gjorgji", "Gjorgjiev"));
     }
 }
