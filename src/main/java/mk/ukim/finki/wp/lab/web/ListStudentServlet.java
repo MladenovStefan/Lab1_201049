@@ -1,5 +1,6 @@
 package mk.ukim.finki.wp.lab.web;
 
+import mk.ukim.finki.wp.lab.model.Course;
 import mk.ukim.finki.wp.lab.repository.CourseRepository;
 import mk.ukim.finki.wp.lab.service.CourseService;
 import mk.ukim.finki.wp.lab.service.StudentService;
@@ -35,7 +36,12 @@ public class ListStudentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/StudentEnrollmentSummary");
+        WebContext webContext = new WebContext(req, resp, req.getServletContext());
+        String username = req.getParameter("studentName");
+        Long courseId = Long.parseLong((String) req.getSession().getAttribute("courseId"));
 
+        Course course = courseService.addStudentInCourse(username, courseId);
+        webContext.setVariable("course", course);
+        resp.sendRedirect("/StudentEnrollmentSummary");
     }
 }

@@ -8,14 +8,16 @@
 <header>
   <h1>Students in Course </h1>
 </header>
-<section>
-  <div>Veb Programiranje</div>
-  <ul>
-    <li>Petar Petrov (petar.petrov)</li>
-    <li>Jovan Jovanov (jovan.jovanov)</li>
-  </ul>
-  <a href="/listCourses">Back</a>
-</section>
+
+  <section>
+
+      <div th:text="'All Students in course ' + ${course.getName()}"></div>
+      <ul>
+        <li th:each="student : ${course.getStudents()}" th:text="${student.getName()} + ' ' + ${student.getSurname()} + '(' + ${student.getUsername()} + ')'"></li>
+      </ul>
+
+  </section>
+
 
 </body>
 </html>

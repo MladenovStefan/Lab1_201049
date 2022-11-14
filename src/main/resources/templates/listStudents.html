@@ -33,16 +33,18 @@
 <section>
   <h2>Select the student to enroll:</h2>
   <a href='/createStudent' type='button'>Create New Student</a> <br/> <br/>
-  <form th:method="POST" th:action="@{/listStudents}">
+  <form th:method="POST" th:action="@{/AddStudent}">
     <div th:each="student : ${students}">
-      <input type="radio" name="size" th:value="${student.getUsername()}">
+      <input type="radio" name="studentName" th:value="${student.getUsername()}">
       <label th:for="${student.getUsername()}" th:text="${student.getName()}"></label>
       <label th:for="${student.getUsername()}" th:text="${student.getSurname()}"></label>
-  </form>
     </div>
+    <input type="submit" th:value="Submit"/>
+  </form>
+
   <br/>
 
-  <a href="/StudentEnrollmentSummary">Submit</a>
+
 </section>
 <aside>
   <table>

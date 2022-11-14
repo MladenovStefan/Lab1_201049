@@ -1,5 +1,7 @@
 package mk.ukim.finki.wp.lab.web;
 
+import mk.ukim.finki.wp.lab.model.Course;
+import mk.ukim.finki.wp.lab.service.CourseService;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
@@ -12,9 +14,11 @@ import java.io.IOException;
 
 @WebServlet(name = "student-enrollment-summary", urlPatterns = "/StudentEnrollmentSummary")
 public class StudentEnrollmentSummary extends HttpServlet {
+    private final CourseService courseService;
     private final SpringTemplateEngine springTemplateEngine;
 
-    public StudentEnrollmentSummary(SpringTemplateEngine springTemplateEngine) {
+    public StudentEnrollmentSummary(CourseService courseService, SpringTemplateEngine springTemplateEngine) {
+        this.courseService = courseService;
         this.springTemplateEngine = springTemplateEngine;
     }
 
@@ -22,11 +26,14 @@ public class StudentEnrollmentSummary extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         WebContext webContext = new WebContext(req, resp, req.getServletContext());
+        Course course = courseService.findCourseById(Long.parseLong ((String)req.getSession().getAttribute("courseId")));
+        webContext.setVariable("course", course);
         springTemplateEngine.process("studentsInCourse.html", webContext, resp.getWriter());
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        WebContext webContext = new WebContext(req, resp, req.getServletContext());
+
     }
 }

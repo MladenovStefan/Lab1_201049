@@ -16,7 +16,7 @@ public class CourseRepository {
     }
 
     public Course findById(Long courseId){
-        return DataHolder.courseList.get(Math.toIntExact(courseId));
+        return DataHolder.courseList.stream().filter(r->r.getCourseId().equals(courseId)).findFirst().get();
     }
 
     public List<Student> findAllStudentsByCourse(Long courseId){

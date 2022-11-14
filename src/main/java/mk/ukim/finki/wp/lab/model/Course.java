@@ -6,6 +6,8 @@ import java.util.List;
 
 @Data
 public class Course {
+
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseId;
     private String name;
     private String description;

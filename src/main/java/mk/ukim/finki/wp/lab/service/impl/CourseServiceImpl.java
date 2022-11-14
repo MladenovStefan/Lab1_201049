@@ -40,6 +40,11 @@ public class CourseServiceImpl implements CourseService {
         return course;
     }
 
+    public Course findCourseById(Long courseId){
+        Course course = courseRepository.findById(courseId);
+        return course;
+    }
+
 //    @Override
 //    public Course addCourse(String name, String description, Long teacherId) {
 //        Course vrati = new Course(name, description);
