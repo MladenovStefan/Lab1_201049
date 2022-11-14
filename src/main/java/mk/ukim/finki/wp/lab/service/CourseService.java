@@ -11,5 +11,7 @@ public interface CourseService {
     Course addStudentInCourse(String username, Long courseId);
 
     Course findCourseById(Long courseId);
-//    Course addCourse(String name,String description,Long teacherId);
+    Course addCourse(String name,String description,Long teacherId);
+
+    void deleteCourse(Long courseId);
 }

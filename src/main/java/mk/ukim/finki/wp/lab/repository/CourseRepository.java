@@ -35,4 +35,7 @@ public class CourseRepository {
         DataHolder.courseList.add(course);
         return course;
     }
+    public void delete(Long courseId){
+        DataHolder.courseList.removeIf(r->r.getCourseId().equals(courseId));
+    }
 }

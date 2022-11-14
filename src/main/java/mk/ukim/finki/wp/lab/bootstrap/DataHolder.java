@@ -27,15 +27,16 @@ public class DataHolder {
 
         List<Student> temp = new ArrayList<>();
         temp.add(studentList.get(0));
+        Teacher teacher = new Teacher (1L, "P", "O");
 
-        courseList.add(new Course(1L, "Veb programiranje",
-                "VP", temp));
-        courseList.add(new Course(2L, "Operativni Sistemi",
-                "OS", new ArrayList<Student>()));
-        courseList.add(new Course(3L, "Elektronska i mobilna trgovija",
-                "EMT", new ArrayList<Student>()));
-        courseList.add(new Course(4L, "Kompjuterski mrezi",
-                "KM", new ArrayList<Student>()));
+        courseList.add(new Course("Veb programiranje",
+                "VP", temp, teacher));
+        courseList.add(new Course("Operativni Sistemi",
+                "OS", new ArrayList<Student>(), teacher));
+        courseList.add(new Course("Elektronska i mobilna trgovija",
+                "EMT", new ArrayList<Student>(), teacher));
+        courseList.add(new Course("Kompjuterski mrezi",
+                "KM", new ArrayList<Student>(),teacher));
 
 
     }
