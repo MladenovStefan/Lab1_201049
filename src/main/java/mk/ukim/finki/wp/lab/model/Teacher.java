@@ -6,11 +6,11 @@ import lombok.Data;
 public class Teacher {
     private Long id;
     private String name;
-    private String surnamne;
+    private String surname;
 
-    public Teacher(Long id, String name, String surnamne) {
+    public Teacher(Long id, String name, String surname) {
         this.id = id;
         this.name = name;
-        this.surnamne = surnamne;
+        this.surname = surname;
     }
 }

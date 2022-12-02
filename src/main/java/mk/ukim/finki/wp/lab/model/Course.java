@@ -9,9 +9,9 @@ public class Course {
 
     private Teacher teacher;
 
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseId;
     private String name;
+
     private String description;
     private List<Student> students;
 

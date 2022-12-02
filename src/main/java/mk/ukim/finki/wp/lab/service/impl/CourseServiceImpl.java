@@ -52,8 +52,14 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public Course addCourse(String name, String description, Long teacherId) {
         Course course = new Course(name, description, new ArrayList<>(), teacherService.findTeacherById(teacherId));
+        course.setName(name);
+        course.setDescription(description);
+        course.setTeacher(teacherService.findTeacherById(teacherId));
         courseRepository.save(course);
         return course;
+    }
+    public Course save(Course course){
+        return courseRepository.save(course);
     }
 
     @Override

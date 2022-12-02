@@ -8,8 +8,10 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
-//Da se implementira prebaruvanje na studenti na stranata kade istite se prikazuvaat ili
-//da se prebaruvanje na kursevi na stranata na tie se prikazuvaat
+// TODO Da se implementira prebaruvanje na studenti na stranata kade istite se prikazuvaat ili
+// TODO da se prebaruvanje na kursevi na stranata na tie se prikazuvaat
+// TODO dop poeni: svojstvo za tip na kurs: leten, zimski itn i da se naprai filtri, dropdown
+
 @Component
 public class DataHolder {
     public static List<Course> courseList = new ArrayList<>();
@@ -28,6 +30,9 @@ public class DataHolder {
         List<Student> temp = new ArrayList<>();
         temp.add(studentList.get(0));
         Teacher teacher = new Teacher (1L, "P", "O");
+
+        teacherList.add(new Teacher(1L, "Riste", "Stojanov"));
+        teacherList.add(new Teacher(2L,"Sasho", "Gramatikov"));
 
         courseList.add(new Course("Veb programiranje",
                 "VP", temp, teacher));

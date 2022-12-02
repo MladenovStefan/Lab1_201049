@@ -15,15 +15,20 @@
 </header>
 <main>
     <h2>Choose course:</h2>
-    <form th:method="POST" th:action="@{/listCourses}">
-        <ul>
-            <li th:each="course : ${courses}">
-                <input type="radio" name="courseId" th:value="${course.getCourseId()}" th:text="${course.getName()}">
-                <label th:for="${course.getCourseId()}"></label>
-            </li>
-        </ul>
+    <form th:method="POST" th:action="@{/courses}">
+        <tr th:each="course: ${courses}" class="course">
+            <td th:text="${course.getCourseId()}"></td>
+            <td> <input type="radio" name="courseId" th:value="${course.getCourseId()}" th:text="${course.getName()}"></td>
+            <td><label th:for="${course.getCourseId()}"></label></td>
+            <td><th:block><a th:href="@{/courses/edit/{id} (id = ${course.getCourseId()})}" >Edit</a></th:block></td>
+            <td><th:block><a th:href="@{/courses/delete/{id} (id = ${course.getCourseId()})}" >Delete</a></th:block></td><br />
+        </tr>
         <input type="submit" th:value="Submit"/>
     </form>
+    <form th:method="GET">
+        <a th:href="@{/courses/add}">Add</a>
+    </form>
+
 <!--    <div th:each="course : ${courses}">-->
 <!--        <input type="radio" name="courseId" th:value="${course.getCourseId()}">-->
 <!--        <label th:for="${course.getCourseId()}" th:text="${course.getName()}"></label>-->

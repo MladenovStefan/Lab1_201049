@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="'/courses/edit/' + ${course.getCourseId()}" th:method="POST">
+        <div>
+            <h1 >Edit Course</h1>
+            <input type="text" placeholder="Course Name" name="name" th:value="${course!=null}?${course.getName()}:''">
+            <input type="text" placeholder="Course Description" name="description" th:value="${course!=null}?${course.getDescription()}:''">
+            <select  name="teacherId" aria-label="Select a teacher">
+                <option th:each="teacher : ${teachers}"
+                        th:selected="${teacher.getId()==course.getTeacher().getId()}"
+                        th:text="${teacher.getName() + ' ' + teacher.getSurname()}"
+                        th:value="${teacher.getId()}">
+                </option>
+                <option th:each="teacher : ${listTeachers}"
+                    th:text="${teacher.getName() + ' ' + teacher.getSurname()}"
+                    th:value="${teacher.getId()}">
+                </option>
+            </select>
+            <input type="submit" value="Submit" >
+        </div>
+</form>
+
+</body>
+</html>

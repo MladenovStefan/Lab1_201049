@@ -14,4 +14,6 @@ public interface CourseService {
     Course addCourse(String name,String description,Long teacherId);
 
     void deleteCourse(Long courseId);
+
+    Course save(Course course);
 }
