@@ -8,9 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 @RequestMapping("/courses")
 public class CourseController {
@@ -58,15 +55,17 @@ public class CourseController {
         Course toEdit = courseService.findCourseById(id);
         model.addAttribute("teachers", teacherService.findAll());
         model.addAttribute("course", toEdit);
-        return "add-course";
+        return "edit-course";
     }
 
     @PostMapping("/edit/{id}")
-    public String editCoursePage(@PathVariable Long id, @RequestParam(required = false) String name,
-                                 @RequestParam(required = false) String desc, @RequestParam(required = false) Teacher teacher, Model model){
+    public String editCoursePage(@PathVariable Long id,
+                                 @RequestParam(required = false) String name,
+                                 @RequestParam(required = false) String description,
+                                 @RequestParam(required = false) Teacher teacher, Model model){
         Course course = courseService.findCourseById(id);
         course.setName(name);
-        course.setDescription(desc);
+        course.setDescription(description);
         course.setTeacher(teacher);
         courseService.save(course);
 
